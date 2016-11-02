@@ -1,0 +1,45 @@
+Initialize engine version: 5.4.1f1 (649f48bbbf0f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce 840M (ID=0x1341)
+    Vendor:   NVIDIA
+    VRAM:     2019 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\User\Documents\Unity Folder\The Quarterly War\QW_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\User\Documents\Unity Folder\The Quarterly War\QW_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\User\Documents\Unity Folder\The Quarterly War\QW_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\User\Documents\Unity Folder\The Quarterly War\QW_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\User\Documents\Unity Folder\The Quarterly War\QW_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\User\Documents\Unity Folder\The Quarterly War\QW_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\User\Documents\Unity Folder\The Quarterly War\QW_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\User\Documents\Unity Folder\The Quarterly War\QW_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.045 seconds
+Platform assembly: C:\Users\User\Documents\Unity Folder\The Quarterly War\QW_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\User\Documents\Unity Folder\The Quarterly War\QW_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.926724 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.426797 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2129.
+Total: 0.618386 ms (FindLiveObjects: 0.238202 ms CreateObjectMapping: 0.038916 ms MarkObjects: 0.328009 ms  DeleteObjects: 0.009836 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.331711 ms
+
+Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 6895.
+Total: 1.422374 ms (FindLiveObjects: 0.334852 ms CreateObjectMapping: 0.109479 ms MarkObjects: 0.888235 ms  DeleteObjects: 0.089379 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.118593 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 14471.
+Total: 2.841327 ms (FindLiveObjects: 0.680823 ms CreateObjectMapping: 0.209122 ms MarkObjects: 1.937268 ms  DeleteObjects: 0.013257 ms)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 355c -> priority: 1 
+  Thread -> id: 17bc -> priority: 1 
