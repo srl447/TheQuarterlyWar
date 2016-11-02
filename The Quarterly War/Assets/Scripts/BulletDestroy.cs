@@ -4,6 +4,8 @@ using System.Collections;
 public class BulletDestroy : MonoBehaviour {
     AudioSource Magazine;
     public AudioClip thud;
+    float distX;
+    float distY;
 	// Use this for initialization
 	void Start () {
         Magazine = GetComponent<AudioSource>();
@@ -11,9 +13,17 @@ public class BulletDestroy : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
+	void Update ()
+    {
+       distX = CameraPosition.posX - transform.position.x;
+       distY = CameraPosition.posY - transform.position.y;
+       if (gameObject.tag == "Magazine" && (distX > 14 || distX < -14 || distY > 7 || distY < -7))
+        {
+            Destroy(gameObject);
+        }
+
+
+    }
 
     void OnCollisionEnter2D(Collision2D destroy)
     {

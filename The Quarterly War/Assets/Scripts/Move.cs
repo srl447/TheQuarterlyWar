@@ -10,14 +10,14 @@ public class Move : MonoBehaviour
     public float playerVelocity;
     public float wallSlide;
     public GameObject timer;
-    AudioSource skates;
+    //AudioSource skates;
 
     // dir = 0 for left and dir = 1 for right
     // Use this for initialization
     void Start()
     {
         dir = 1;
-        skates = timer.GetComponent<AudioSource>();
+        //skates = timer.GetComponent<AudioSource>();
 
     }
 
