@@ -4,6 +4,7 @@ using System.Collections;
 public class MagazineColor : MonoBehaviour
 {
     public Sprite alt1;
+    public Sprite alt2;
     float color;
 	// Use this for initialization
 	void Start ()
@@ -12,6 +13,10 @@ public class MagazineColor : MonoBehaviour
         if (color == 3)
         {
             GetComponent<SpriteRenderer>().sprite = alt1;
+        }
+        if (color == 4)
+        {
+            GetComponent<SpriteRenderer>().sprite = alt2;
         }
 	}
 	
