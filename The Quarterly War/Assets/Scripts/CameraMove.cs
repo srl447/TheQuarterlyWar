@@ -9,7 +9,7 @@ public class CameraMove : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        cameraMove = new Vector3(.11f, 0, 0);
+        cameraMove = new Vector3(.09f, 0, 0);
 	}
 	
 	// Update is called once per frame
