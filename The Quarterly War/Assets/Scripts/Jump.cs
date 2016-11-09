@@ -29,7 +29,7 @@ public class Jump : MonoBehaviour
         playerVelocity = GetComponent<Rigidbody2D>().velocity.y;
         if (hasJump || isJumping)
         {
-            if (Input.GetKey("space") || Input.GetKey("up"))
+            if (Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") || Input.GetKey("o"))
             {
                 if (hasJump)
                 {
@@ -50,7 +50,7 @@ public class Jump : MonoBehaviour
                 }
 
             }
-            if (Input.GetKeyUp("space") || Input.GetKeyUp("up"))
+            if (Input.GetKeyUp("space") || Input.GetKeyUp("up") || Input.GetKeyUp("w") || Input.GetKeyUp("o"))
             {
                 hasJump = false;
                 isJumping = false;
@@ -75,9 +75,10 @@ public class Jump : MonoBehaviour
             isJumping = false;
         }
     }
+
     void OnCollisionExit2D (Collision2D noJump)
     {
-        if (noJump.gameObject.tag == "Floor" || noJump.gameObject.tag == "Floor-Mag")
+        if (noJump.gameObject.tag == "Floor")
         {
             hasJump = false;
             GetComponent<Rigidbody2D>().drag = drag;

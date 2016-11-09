@@ -6,17 +6,37 @@ public class CameraMove : MonoBehaviour {
     float diffPos;
     bool moveLeft;
     bool moveRight;
+    int wait;
 	// Use this for initialization
 	void Start ()
     {
-        cameraMove = new Vector3(.09f, 0, 0);
+        wait = 0;
+        cameraMove = new Vector3(.08f, 0, 0);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
         diffPos = CameraPosition.posX - PlayerPosition.posX;
-        /*if (Move.dir == 1 && !moveLeft)
+        if (Move.dir == 1 && diffPos < 6f && (Input.GetKey("right") || Input.GetKey("d")) && wait >= 10)
+        {
+            transform.position = transform.position + cameraMove;
+        }
+        if (Move.dir == 0 && diffPos > -6f && (Input.GetKey("left") || Input.GetKey("a")) && wait >= 10)
+        {
+            transform.position = transform.position - cameraMove;
+        }
+        if (Input.GetKeyUp("left") || Input.GetKeyUp("a") || Input.GetKeyUp("right") || Input.GetKeyUp("d"))
+        {
+            wait = 0;
+        }
+        if (wait < 10)
+        {
+            wait++;
+        }
+    }
+}
+/*if (Move.dir == 1 && !moveLeft)
         {
             moveRight = true;
         }
@@ -42,15 +62,3 @@ public class CameraMove : MonoBehaviour {
         {
             moveLeft = false;
         }*/
-        if (Move.dir == 1 && diffPos < 6f && Input.GetKey("right"))
-        {
-            transform.position = transform.position + cameraMove;
-            Debug.Log(CameraPosition.posX);
-        }
-        if (Move.dir == 0 && diffPos > -6f && Input.GetKey("left"))
-        {
-            transform.position = transform.position - cameraMove;
-            Debug.Log(CameraPosition.posX);
-        }
-    }
-}

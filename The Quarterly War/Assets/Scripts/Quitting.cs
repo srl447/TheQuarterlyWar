@@ -15,7 +15,7 @@ public class Quitting : MonoBehaviour {
         {
             Application.Quit();
         }
-        if (Input.GetKey("s"))
+        if (Input.GetKey("1"))
         {
             CustomerCollect.totalDelivered = 0;
             Timer.timer = 0;

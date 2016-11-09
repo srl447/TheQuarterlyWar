@@ -18,7 +18,7 @@ public class Shoot : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (shootCooldown > 8 && (Input.GetKeyDown("z") || Input.GetKeyDown ("[1]")))
+        if (shootCooldown > 8 && (Input.GetKeyDown("z") || Input.GetKeyDown ("p")))
         {
             GameObject newBullet = Instantiate(bullet) as GameObject;
             magazine.PlayOneShot(shootNoise, .8f);

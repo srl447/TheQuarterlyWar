@@ -11,6 +11,8 @@ public class DrawTimer : MonoBehaviour
     int blueCount;
     public static int cusNeed = 2;
     public GameObject clock;
+    public GameObject custFace;
+    public GameObject cameraT;
     GUIStyle guiTime = new GUIStyle();
     GUIStyle guiCust = new GUIStyle();
     GUIStyle guiColon = new GUIStyle();
@@ -23,6 +25,12 @@ public class DrawTimer : MonoBehaviour
         guiTime.normal.textColor = Color.white;
         guiCust.normal.textColor = Color.white;
         guiColon.normal.textColor = Color.white;
+        GameObject clockUI = Instantiate(clock) as GameObject;
+        GameObject custUI = Instantiate(custFace) as GameObject;
+        clockUI.transform.SetParent(cameraT.transform);
+        custUI.transform.SetParent(cameraT.transform);
+        clockUI.transform.position = Camera.main.ViewportToWorldPoint(new Vector3 (.035f, .915f, 10));
+        custUI.transform.position = Camera.main.ViewportToWorldPoint(new Vector3(.035f, .8f, 10));
     }
 	
 	// Update is called once per frame

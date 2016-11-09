@@ -14,7 +14,7 @@ public class Reset : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown("5"))
         {
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);

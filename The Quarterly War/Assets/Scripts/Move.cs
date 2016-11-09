@@ -26,7 +26,7 @@ public class Move : MonoBehaviour
     {
         Animator animator = gameObject.GetComponent<Animator>();
         playerVelocity = GetComponent<Rigidbody2D>().velocity.x;
-        if (Input.GetKey("left"))
+        if (Input.GetKey("left") || Input.GetKey("a"))
         {
             animator.SetTrigger("Walk");
             //skates.Play();
@@ -37,12 +37,12 @@ public class Move : MonoBehaviour
             }
 
         }
-        if(Input.GetKeyUp("left"))
+        if(Input.GetKeyUp("left") || Input.GetKeyUp("a"))
         {
             GetComponent<Rigidbody2D>().AddForce(Vector3.right * -playerVelocity * runSpeed * skid);
             //skates.Stop();
         }
-        if (Input.GetKey("right"))
+        if (Input.GetKey("right") || Input.GetKey("d"))
         {
             animator.SetTrigger("Walk");
             //skates.Play();
@@ -52,7 +52,7 @@ public class Move : MonoBehaviour
                 dir = 1;
             }
         }
-        if (Input.GetKeyUp("right"))
+        if (Input.GetKeyUp("right") || Input.GetKeyUp("d"))
         {
             GetComponent<Rigidbody2D>().AddForce(Vector3.left * playerVelocity * runSpeed * skid);
             //skates.Stop();
