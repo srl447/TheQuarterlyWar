@@ -9,7 +9,9 @@ public class Jump : MonoBehaviour
     //bool playJump;
     public float maxHeight;
     public float playerVelocity;
+    public float extra;
     public float drag;
+    public float removeFloat;
     public AudioClip jumpNoise;
     public AudioClip land;
     AudioSource feet;
@@ -47,18 +49,18 @@ public class Jump : MonoBehaviour
                     hasJump = false;
                     isJumping = false;
                     animator.SetTrigger("Stop");
+                    GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat * extra);
                 }
 
             }
             if (Input.GetKeyUp("space") || Input.GetKeyUp("up") || Input.GetKeyUp("w") || Input.GetKeyUp("o"))
             {
+                GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat);
                 hasJump = false;
                 isJumping = false;
                 animator.SetTrigger("Stop");
             }
-            
         }
-
     }
     void OnCollisionEnter2D (Collision2D coll)
     {

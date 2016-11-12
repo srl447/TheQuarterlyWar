@@ -6,7 +6,7 @@ public class Start : MonoBehaviour
 {
 	void Update ()
     {
-        if (Input.GetKey("space"))
+        if (Input.GetKey("enter") || Input.GetKey("return"))
         {
             SceneManager.LoadScene(3);
         }
