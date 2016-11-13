@@ -21,7 +21,7 @@ public class IntroWin : MonoBehaviour {
                 winShine.Play();
             }
         }
-        if (timer == 30)
+        if (timer == 70)
         {
             SceneManager.LoadScene(4);
             CustomerCollect.totalDelivered = 0;

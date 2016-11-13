@@ -22,7 +22,7 @@ public class SecondWin : MonoBehaviour {
                 winShine.Play();
             }
         }
-        if (timer == 30)
+        if (timer == 70)
         {
             SceneManager.LoadScene(5);
             CustomerCollect.totalDelivered = 0;

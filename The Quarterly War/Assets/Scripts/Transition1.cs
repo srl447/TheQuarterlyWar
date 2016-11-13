@@ -14,7 +14,7 @@ public class Transition1 : MonoBehaviour {
 	void Update ()
     {
         timer++;
-        if (timer == 130)
+        if (timer == 220)
         {
             SceneManager.LoadScene(6);
         }

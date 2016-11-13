@@ -9,6 +9,7 @@ public class Start : MonoBehaviour
         if (Input.GetKey("enter") || Input.GetKey("return"))
         {
             SceneManager.LoadScene(3);
+            CustomerCollect.totalDelivered = 0;
         }
 	
 	}

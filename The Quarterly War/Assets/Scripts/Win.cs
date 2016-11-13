@@ -21,7 +21,7 @@ public class Win : MonoBehaviour {
                 winShine.Play();
             }
         }
-        if (timer == 30)
+        if (timer == 70)
         {
             SceneManager.LoadScene(2);
         }
