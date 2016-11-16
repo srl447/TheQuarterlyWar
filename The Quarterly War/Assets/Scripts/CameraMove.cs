@@ -4,17 +4,20 @@ using System.Collections;
 public class CameraMove : MonoBehaviour {
     Vector3 cameraMove;
     Vector3 cameraMoveDown;
+    Vector3 cameraMoveUp;
     float diffPos;
     float diffPosY;
     bool moveLeft;
     bool moveRight;
     int wait;
+    int hold = 0;
 	// Use this for initialization
 	void Start ()
     {
         wait = 0;
         cameraMove = new Vector3(.08f, 0, 0);
-        cameraMoveDown = new Vector3(0, .05f, 0);
+        cameraMoveDown = new Vector3(0, .048f, 0);
+        cameraMoveUp = new Vector3(0, .08f, 0);
 	}
 	
 	// Update is called once per frame
@@ -38,13 +41,18 @@ public class CameraMove : MonoBehaviour {
         {
             wait++;
         }
-        if (diffPosY > -2f && (Input.GetKey("space")))
+        if (diffPosY > -2f && !Jump.collided)
         {
-            transform.position = transform.position - cameraMoveDown;
+            hold++;
+            if (hold > 20)
+            {
+                transform.position = transform.position - cameraMoveDown;
+            }
         }
         if (Jump.collided && diffPosY < 2f)
         {
-            transform.position = transform.position + cameraMoveDown;
+            transform.position = transform.position + cameraMoveUp;
+            hold = 0;
         }
     }
 }

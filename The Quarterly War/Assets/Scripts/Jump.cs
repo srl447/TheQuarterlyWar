@@ -78,7 +78,10 @@ public class Jump : MonoBehaviour
             hasJump = false;
             isJumping = false;
         }
-        collided = true;
+        if (coll.gameObject.tag == "Floor")
+        {
+            collided = true;
+        }
     }
 
     void OnCollisionExit2D (Collision2D noJump)
