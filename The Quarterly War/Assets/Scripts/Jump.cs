@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Jump : MonoBehaviour
 {
+    public static bool collided;
     public float jumpHeight;
     bool hasJump;
     bool isJumping;
@@ -18,6 +19,7 @@ public class Jump : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        collided = true;
         hasJump = true;
         isJumping = false;
         //playJump = true;
@@ -76,6 +78,7 @@ public class Jump : MonoBehaviour
             hasJump = false;
             isJumping = false;
         }
+        collided = true;
     }
 
     void OnCollisionExit2D (Collision2D noJump)
@@ -85,5 +88,6 @@ public class Jump : MonoBehaviour
             hasJump = false;
             GetComponent<Rigidbody2D>().drag = drag;
         }
+        collided = false;
     }
 }

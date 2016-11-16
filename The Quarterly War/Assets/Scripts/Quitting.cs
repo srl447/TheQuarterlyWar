@@ -19,7 +19,7 @@ public class Quitting : MonoBehaviour {
         {
             CustomerCollect.totalDelivered = 0;
             Timer.timer = 0;
-            DrawTimer.cusNeed = 2;
+            TextCust.cusNeed = 2;
             SceneManager.LoadScene(0);
         }
     }

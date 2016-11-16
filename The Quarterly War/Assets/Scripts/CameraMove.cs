@@ -3,7 +3,9 @@ using System.Collections;
 
 public class CameraMove : MonoBehaviour {
     Vector3 cameraMove;
+    Vector3 cameraMoveDown;
     float diffPos;
+    float diffPosY;
     bool moveLeft;
     bool moveRight;
     int wait;
@@ -12,12 +14,14 @@ public class CameraMove : MonoBehaviour {
     {
         wait = 0;
         cameraMove = new Vector3(.08f, 0, 0);
+        cameraMoveDown = new Vector3(0, .05f, 0);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
         diffPos = CameraPosition.posX - PlayerPosition.posX;
+        diffPosY = CameraPosition.posY - PlayerPosition.posY;
         if (Move.dir == 1 && diffPos < 6f && (Input.GetKey("right") || Input.GetKey("d")) && wait >= 10)
         {
             transform.position = transform.position + cameraMove;
@@ -34,8 +38,23 @@ public class CameraMove : MonoBehaviour {
         {
             wait++;
         }
+        if (diffPosY > -2f && (Input.GetKey("space")))
+        {
+            transform.position = transform.position - cameraMoveDown;
+        }
+        if (Jump.collided && diffPosY < 2f)
+        {
+            transform.position = transform.position + cameraMoveDown;
+        }
     }
 }
+
+
+
+
+
+
+
 /*if (Move.dir == 1 && !moveLeft)
         {
             moveRight = true;

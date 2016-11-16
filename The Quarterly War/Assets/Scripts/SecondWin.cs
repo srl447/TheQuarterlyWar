@@ -27,7 +27,7 @@ public class SecondWin : MonoBehaviour {
             SceneManager.LoadScene(5);
             CustomerCollect.totalDelivered = 0;
             Timer.timer = 0;
-            DrawTimer.cusNeed = 7;
+            TextCust.cusNeed = 7;
         }
 
     }

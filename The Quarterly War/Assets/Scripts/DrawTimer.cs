@@ -40,12 +40,12 @@ public class DrawTimer : MonoBehaviour
         //cusLeft = Mathf.RoundToInt(cusNeed - CustomerCollect.totalDelivered);
         if (timeToDisplay < 22 && timeToDisplay %2 == 0)
         {
-            guiTime.normal.textColor = Color.red;
+            //guiTime.normal.textColor = Color.red;
             //guiTime.fontSize = 31;
         }
         if (timeToDisplay < 22 && timeToDisplay % 2 == 1)
         {
-            guiTime.normal.textColor = Color.white;
+            //guiTime.normal.textColor = Color.white;
             //guiTime.fontSize = 30;
         }
         if (CustomerCollect.totalDelivered > oldCust)
@@ -55,12 +55,12 @@ public class DrawTimer : MonoBehaviour
         }
         if (blueCount < 20 && blueTime)
         {
-            guiCust.normal.textColor = Color.blue;
+            //guiCust.normal.textColor = Color.blue;
             blueCount++;
         }
         if (blueCount >= 20)
         {
-            guiCust.normal.textColor = Color.white;
+            //guiCust.normal.textColor = Color.white;
             blueTime = false;
             blueCount = 0;
         }
