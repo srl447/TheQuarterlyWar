@@ -22,7 +22,7 @@ public class Move : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Animator animator = gameObject.GetComponent<Animator>();
         playerVelocity = GetComponent<Rigidbody2D>().velocity.x;

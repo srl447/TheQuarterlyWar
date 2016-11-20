@@ -21,7 +21,7 @@ public class CameraMove : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
         diffPos = CameraPosition.posX - PlayerPosition.posX;
         diffPosY = CameraPosition.posY - PlayerPosition.posY;

@@ -27,7 +27,7 @@ public class Jump : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Animator animator = gameObject.GetComponent<Animator>();
         playerVelocity = GetComponent<Rigidbody2D>().velocity.y;
@@ -66,7 +66,7 @@ public class Jump : MonoBehaviour
     }
     void OnCollisionEnter2D (Collision2D coll)
     {
-        if (coll.gameObject.tag == "Floor" || coll.gameObject.tag == "Floor-Mag")
+        if (coll.gameObject.tag == "Floor" || coll.gameObject.tag == "Floor-Mag" || coll.gameObject.tag == "Platform")
         {
             hasJump = true;
             //playJump = true;
@@ -86,7 +86,7 @@ public class Jump : MonoBehaviour
 
     void OnCollisionExit2D (Collision2D noJump)
     {
-        if (noJump.gameObject.tag == "Floor")
+        if (noJump.gameObject.tag == "Floor" || noJump.gameObject.tag == "Platform")
         {
             hasJump = false;
             GetComponent<Rigidbody2D>().drag = drag;
