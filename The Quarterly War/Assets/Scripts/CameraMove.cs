@@ -16,8 +16,8 @@ public class CameraMove : MonoBehaviour {
     {
         wait = 0;
         cameraMove = new Vector3(.08f, 0, 0);
-        cameraMoveDown = new Vector3(0, .048f, 0);
-        cameraMoveUp = new Vector3(0, .08f, 0);
+        cameraMoveDown = new Vector3(0, .045f, 0);
+        cameraMoveUp = new Vector3(0, .075f, 0);
 	}
 	
 	// Update is called once per frame
@@ -41,18 +41,22 @@ public class CameraMove : MonoBehaviour {
         {
             wait++;
         }
-        if (diffPosY > -2f && !Jump.collided)
+        if (diffPosY > -2f && !Jump.collided && CameraPosition.posY >= -1)
         {
             hold++;
-            if (hold > 20)
+            if (hold > 18)
             {
                 transform.position = transform.position - cameraMoveDown;
             }
         }
-        if (Jump.collided && diffPosY < 2f)
+        if (Jump.collided && diffPosY < 1.6f)
         {
             transform.position = transform.position + cameraMoveUp;
             hold = 0;
+        }
+        if (CameraPosition.posY < -1.1)
+        {
+            transform.position = transform.position + new Vector3(0, .045f, 0);
         }
     }
 }

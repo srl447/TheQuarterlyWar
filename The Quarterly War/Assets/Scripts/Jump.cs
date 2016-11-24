@@ -29,39 +29,50 @@ public class Jump : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        bool keyPress = false;
+        bool keyHold = false;
+        if ((Input.GetKeyDown("space") || Input.GetKeyDown("up") || Input.GetKeyDown("w") || Input.GetKeyDown("o")) && hasJump)
+        {
+            isJumping = true;
+            keyPress = true;
+            hasJump = false;    
+        }
+        if (Input.GetKeyUp("space") || Input.GetKeyUp("up") || Input.GetKeyUp("w") || Input.GetKeyUp("o"))
+        {
+            isJumping = false;
+            keyPress = true;
+        }
+        if (Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") || Input.GetKey("o"))
+        {
+            keyHold = true;
+        }
         Animator animator = gameObject.GetComponent<Animator>();
         playerVelocity = GetComponent<Rigidbody2D>().velocity.y;
-        if (hasJump || isJumping)
+        if (isJumping)
         {
-            if (Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") || Input.GetKey("o"))
+            if (hasJump && keyPress)
             {
-                if (hasJump)
-                {
-                    //audio.PlayOneShot(jumpNoise, .7f);
-                    feet.Play();
-                    animator.SetTrigger("Jump");
-                }
-                isJumping = true;
-                if (playerVelocity < maxHeight)
-                {
-                    GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpHeight);
-                }
-                if (playerVelocity >= maxHeight)
-                {
-                    hasJump = false;
-                    isJumping = false;
-                    animator.SetTrigger("Stop");
-                    GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat * extra);
-                }
-
+                //audio.PlayOneShot(jumpNoise, .7f);
+                feet.Play();
+                animator.SetTrigger("Jump");
             }
-            if (Input.GetKeyUp("space") || Input.GetKeyUp("up") || Input.GetKeyUp("w") || Input.GetKeyUp("o"))
+            if (playerVelocity < maxHeight && keyHold)
             {
-                GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat);
-                hasJump = false;
+                GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpHeight);
+            }
+            if (playerVelocity >= maxHeight)
+            {
                 isJumping = false;
                 animator.SetTrigger("Stop");
+                GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat * extra);
             }
+        }
+        if (!isJumping && keyPress)
+        {
+            GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat);
+            isJumping = false;
+            animator.SetTrigger("Stop");
+            
         }
     }
     void OnCollisionEnter2D (Collision2D coll)
@@ -75,7 +86,6 @@ public class Jump : MonoBehaviour
         }
         if (coll.gameObject.tag == "Ceiling")
         {
-            hasJump = false;
             isJumping = false;
         }
         if (coll.gameObject.tag == "Floor")
@@ -88,7 +98,6 @@ public class Jump : MonoBehaviour
     {
         if (noJump.gameObject.tag == "Floor" || noJump.gameObject.tag == "Platform")
         {
-            hasJump = false;
             GetComponent<Rigidbody2D>().drag = drag;
         }
         collided = false;
