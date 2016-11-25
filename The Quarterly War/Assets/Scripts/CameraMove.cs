@@ -11,6 +11,8 @@ public class CameraMove : MonoBehaviour {
     bool moveRight;
     int wait;
     int hold = 0;
+    public static float floor1 = -1;
+    public static float floor2 = -1.1f;
 	// Use this for initialization
 	void Start ()
     {
@@ -41,7 +43,7 @@ public class CameraMove : MonoBehaviour {
         {
             wait++;
         }
-        if (diffPosY > -2f && !Jump.collided && CameraPosition.posY >= -1)
+        if (diffPosY > -2f && !Jump.collided && CameraPosition.posY >= floor1)
         {
             hold++;
             if (hold > 18)
@@ -54,7 +56,7 @@ public class CameraMove : MonoBehaviour {
             transform.position = transform.position + cameraMoveUp;
             hold = 0;
         }
-        if (CameraPosition.posY < -1.1)
+        if (CameraPosition.posY < floor2)
         {
             transform.position = transform.position + new Vector3(0, .045f, 0);
         }

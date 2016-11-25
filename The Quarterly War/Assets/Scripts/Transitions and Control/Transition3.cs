@@ -9,6 +9,8 @@ public class Transition3 : MonoBehaviour
     void Start()
     {
         timer = 0;
+        /* CameraMove.floor1 = -3;
+        CameraMove.floor2 = -3.1f;*/
     }
 
     // Update is called once per frame
