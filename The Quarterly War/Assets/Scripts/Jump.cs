@@ -15,7 +15,7 @@ public class Jump : MonoBehaviour
     public AudioClip jumpNoise;
     public AudioClip land;
     AudioSource feet;
-    bool keyPress = false;
+    //bool keyPress = false;
     bool keyHold = false;
     bool keyRelease = false;
     // Use this for initialization
@@ -34,7 +34,7 @@ public class Jump : MonoBehaviour
         if ((Input.GetKeyDown("space") || Input.GetKeyDown("up") || Input.GetKeyDown("w") || Input.GetKeyDown("o")) && hasJump)
         {
             isJumping = true;
-            keyPress = true;
+            //keyPress = true;
             if (hasJump)
             {
                 feet.Play();
@@ -52,7 +52,7 @@ public class Jump : MonoBehaviour
         }
         else
         {
-            keyPress = false;
+            //keyPress = false;
             keyHold = false;
             keyRelease = false;
         }
@@ -64,7 +64,7 @@ public class Jump : MonoBehaviour
         if ((Input.GetKeyDown("space") || Input.GetKeyDown("up") || Input.GetKeyDown("w") || Input.GetKeyDown("o")) && hasJump)
         {
             isJumping = true;
-            keyPress = true;
+            //keyPress = true;
             if (hasJump)
             {
                 feet.Play();
@@ -82,7 +82,7 @@ public class Jump : MonoBehaviour
         }
         else
         {
-            keyPress = false;
+            //keyPress = false;
             keyHold = false;
         }
         Animator animator = gameObject.GetComponent<Animator>();
@@ -105,13 +105,13 @@ public class Jump : MonoBehaviour
                 animator.SetTrigger("Stop");
                 GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat);
             }
-        }
-        if (!isJumping && keyRelease)
-        {
-            GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat);
-            isJumping = false;
-            animator.SetTrigger("Stop");
-            
+            if (!isJumping && keyRelease)
+            {
+                GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat);
+                isJumping = false;
+                animator.SetTrigger("Stop");
+
+            }
         }
     }
     void OnCollisionEnter2D (Collision2D coll)

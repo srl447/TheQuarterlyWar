@@ -7,6 +7,7 @@ public class IntroWin : MonoBehaviour {
     public ParticleSystem winShine;
     public AudioClip winSound;
     AudioSource winPlay;
+    public static bool stopMusic;
     bool played = false;
     // Use this for initialization
     void Start ()
@@ -14,12 +15,14 @@ public class IntroWin : MonoBehaviour {
         timer = 0;
         winPlay = GetComponent<AudioSource>();
 
+
     }
     void Update()
     {
         if (CustomerCollect.totalDelivered == 2)
         {
             timer++;
+            stopMusic = true;
             if (!winShine.isPlaying)
             {
                 winShine.Play();

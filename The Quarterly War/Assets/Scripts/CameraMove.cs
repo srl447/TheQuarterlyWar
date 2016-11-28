@@ -10,8 +10,9 @@ public class CameraMove : MonoBehaviour {
     bool moveLeft;
     bool moveRight;
     int wait;
+    int wait2;
     int hold = 0;
-    public static float floor1 = -1;
+    public static float floor1 = -1.01f;
     public static float floor2 = -1.1f;
 	// Use this for initialization
 	void Start ()
@@ -39,7 +40,7 @@ public class CameraMove : MonoBehaviour {
         {
             wait = 0;
         }
-        if (wait < 10)
+        if (wait < 12)
         {
             wait++;
         }
@@ -49,12 +50,17 @@ public class CameraMove : MonoBehaviour {
             if (hold > 18)
             {
                 transform.position = transform.position - cameraMoveDown;
+                wait2 = 0;
             }
         }
         if (Jump.collided && diffPosY < 1.6f)
         {
-            transform.position = transform.position + cameraMoveUp;
-            hold = 0;
+            wait2++;
+            if (wait2 >= 10)
+            {
+                transform.position = transform.position + cameraMoveUp;
+                hold = 0;
+            }
         }
         if (CameraPosition.posY < floor2)
         {

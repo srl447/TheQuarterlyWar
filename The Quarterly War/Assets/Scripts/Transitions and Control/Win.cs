@@ -8,6 +8,8 @@ public class Win : MonoBehaviour {
     public AudioClip winSound;
     AudioSource winPlay;
     bool played = false;
+    public static bool stopMusic;
+
     // Use this for initialization
     void Start ()
     {
@@ -20,6 +22,7 @@ public class Win : MonoBehaviour {
         if (CustomerCollect.totalDelivered == 7)
         {
             timer++;
+            stopMusic = true;
             if (!winShine.isPlaying)
             {
                 winShine.Play();
