@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 public class IntroWin : MonoBehaviour {
     int timer;
     public ParticleSystem winShine;
-	// Use this for initialization
-	void Start ()
+    public AudioClip winSound;
+    AudioSource winPlay;
+    bool played = false;
+    // Use this for initialization
+    void Start ()
     {
         timer = 0;
-	
-	}
+        winPlay = GetComponent<AudioSource>();
+
+    }
     void Update()
     {
         if (CustomerCollect.totalDelivered == 2)
@@ -20,8 +24,13 @@ public class IntroWin : MonoBehaviour {
             {
                 winShine.Play();
             }
+            if (!played)
+            {
+                winPlay.PlayOneShot(winSound, 1.1f);
+                played = true;
+            }
         }
-        if (timer == 70)
+        if (timer == 170)
         {
             SceneManager.LoadScene(4);
             CustomerCollect.totalDelivered = 0;

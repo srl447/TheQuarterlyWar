@@ -10,12 +10,14 @@ public class Jump : MonoBehaviour
     //bool playJump;
     public float maxHeight;
     public float playerVelocity;
-    public float extra;
     public float drag;
     public float removeFloat;
     public AudioClip jumpNoise;
     public AudioClip land;
     AudioSource feet;
+    bool keyPress = false;
+    bool keyHold = false;
+    bool keyRelease = false;
     // Use this for initialization
     void Start()
     {
@@ -27,35 +29,72 @@ public class Jump : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        bool keyPress = false;
-        bool keyHold = false;
         if ((Input.GetKeyDown("space") || Input.GetKeyDown("up") || Input.GetKeyDown("w") || Input.GetKeyDown("o")) && hasJump)
         {
             isJumping = true;
             keyPress = true;
-            hasJump = false;    
+            if (hasJump)
+            {
+                feet.Play();
+            }
+            hasJump = false;
         }
         if (Input.GetKeyUp("space") || Input.GetKeyUp("up") || Input.GetKeyUp("w") || Input.GetKeyUp("o"))
         {
             isJumping = false;
-            keyPress = true;
+            keyRelease = true;
         }
         if (Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") || Input.GetKey("o"))
         {
             keyHold = true;
         }
+        else
+        {
+            keyPress = false;
+            keyHold = false;
+            keyRelease = false;
+        }
+    }
+    void FixedUpdate()
+    {
+        //bool keyPress = false;
+        //bool keyHold = false;
+        if ((Input.GetKeyDown("space") || Input.GetKeyDown("up") || Input.GetKeyDown("w") || Input.GetKeyDown("o")) && hasJump)
+        {
+            isJumping = true;
+            keyPress = true;
+            if (hasJump)
+            {
+                feet.Play();
+            }
+            hasJump = false;
+        }
+        if (Input.GetKeyUp("space") || Input.GetKeyUp("up") || Input.GetKeyUp("w") || Input.GetKeyUp("o"))
+        {
+            isJumping = false;
+            keyRelease = true;
+        }
+        if (Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") || Input.GetKey("o"))
+        {
+            keyHold = true;
+        }
+        else
+        {
+            keyPress = false;
+            keyHold = false;
+        }
         Animator animator = gameObject.GetComponent<Animator>();
         playerVelocity = GetComponent<Rigidbody2D>().velocity.y;
         if (isJumping)
         {
-            if (hasJump && keyPress)
+            /*if (hasJump && keyPress)
             {
                 //audio.PlayOneShot(jumpNoise, .7f);
                 feet.Play();
                 animator.SetTrigger("Jump");
-            }
+            }*/
             if (playerVelocity < maxHeight && keyHold)
             {
                 GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpHeight);
@@ -64,10 +103,10 @@ public class Jump : MonoBehaviour
             {
                 isJumping = false;
                 animator.SetTrigger("Stop");
-                GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat * extra);
+                GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat);
             }
         }
-        if (!isJumping && keyPress)
+        if (!isJumping && keyRelease)
         {
             GetComponent<Rigidbody2D>().AddForce(Vector3.down * removeFloat);
             isJumping = false;
