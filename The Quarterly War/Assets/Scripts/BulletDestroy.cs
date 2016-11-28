@@ -29,7 +29,7 @@ public class BulletDestroy : MonoBehaviour {
     {
         if (destroy.gameObject.tag == "Floor" || destroy.gameObject.tag == "wall")
         {
-            Magazine.PlayOneShot(thud, .7f);
+            Magazine.PlayOneShot(thud, .5f);
         }
         if (destroy.gameObject.tag == "Customer")
         {

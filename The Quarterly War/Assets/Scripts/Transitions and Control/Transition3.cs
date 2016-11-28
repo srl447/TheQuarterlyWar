@@ -8,6 +8,7 @@ public class Transition3 : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        StopMusic.transition = true;
         timer = 0;
         /* CameraMove.floor1 = -3;
         CameraMove.floor2 = -3.1f;*/

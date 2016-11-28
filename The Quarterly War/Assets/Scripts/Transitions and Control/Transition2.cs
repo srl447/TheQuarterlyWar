@@ -9,6 +9,7 @@ public class Transition2 : MonoBehaviour
     void Start()
     {
         timer = 0;
+        StopMusic.transition = true;
     }
 
     // Update is called once per frame
